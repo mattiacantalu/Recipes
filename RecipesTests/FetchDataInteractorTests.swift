@@ -18,7 +18,7 @@ class FetchDataInteractorTests: XCTestCase {
             return
         }
         let session = MockedSession.simulate(success: data) { request in
-            XCTAssertEqual(request.url?.absoluteString, "www.sample.com/sampleapifortest/recipes.json")
+            XCTAssertEqual(request.url?.absoluteString, "www.sample.com/sample/recipes.json")
         }
         
         create(session: session)
@@ -30,7 +30,7 @@ class FetchDataInteractorTests: XCTestCase {
     
     func testPerformGetRecipesShouldFail() {
         let session = MockedSession.simulate(failure: MockedSessionError.invalidResponse) { request in
-            XCTAssertEqual(request.url?.absoluteString, "www.sample.com/sampleapifortest/recipes.json")
+            XCTAssertEqual(request.url?.absoluteString, "www.sample.com/sample/recipes.json")
         }
         
         create(session: session)
