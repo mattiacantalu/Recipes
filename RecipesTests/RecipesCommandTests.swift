@@ -9,7 +9,7 @@ class ServiceFacadeTests: XCTestCase {
             return
         }
         let session = MockedSession.simulate(success: data) { request in
-            XCTAssertEqual(request.url?.absoluteString, "www.sample.com/sampleapifortest/recipes.json")
+            XCTAssertEqual(request.url?.absoluteString, "www.sample.com/sample/recipes.json")
         }
         
         ServiceFacade(configuration: configurate(session: session))
@@ -27,7 +27,7 @@ class ServiceFacadeTests: XCTestCase {
     
     func testGetRecipesShouldFail() {
         let session = MockedSession.simulate(failure: MockedSessionError.invalidResponse) { request in
-            XCTAssertEqual(request.url?.absoluteString, "www.sample.com/sampleapifortest/recipes.json")
+            XCTAssertEqual(request.url?.absoluteString, "www.sample.com/sample/recipes.json")
         }
         
         ServiceFacade(configuration: configurate(session: session))
